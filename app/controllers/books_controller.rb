@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   def new
-    @post_image = XXX
+    @book = Book.new
   end
 
 end
