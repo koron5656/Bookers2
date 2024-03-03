@@ -2,6 +2,31 @@
   margin-top: 3rem !important;
 }
 
+.bg-dark {
+  background-color: #343a40 !important;
+}
+
+.navbar, .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between
+}
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.navbar-nav {
+  display:flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
 .container, .container-fluid, .container-lg, .container-mg, .container-sm, .container-xl {
   width: 100%;
   padding-right: 15px;
