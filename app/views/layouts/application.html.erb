@@ -10,33 +10,45 @@
     <script src="https://kit.fontawesome.com/c89bc3e088.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-    <header>
+    <header>          
+          
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <a class="navbar-brand" href="https://577981282c344e76ba1f4812fa98c782.vfs.cloud9.ap-northeast-1.amazonaws.com/">
             <span>Bookers</span>
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-
-          target="#navbarNavDropdown" aria-controlls="navbarNavDropdown" aria-expanded="false"
-          aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <!--<li><a class="nav-link text-light" href="/users/@users"></li>
-              <li><a class="nav-link text-light" href="/users"></li>
-              <li><a class="nav-link text-light" href="/books"></li>
-              <li><a class="nav-link text-light" href="/users/sign out"></li>
-              -->
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Home", "/" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "About", "homes/about" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+            <% else %>
+            <li class="nav-item">
+              <%= link_to "Log in", new_user_session_path %>
+            </li>
+            <% end %>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-  <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   <footer>
     <div class="container mt-5">
       <div class="row">
