@@ -6,7 +6,7 @@ class BooksController < ApplicationController
 
   def index
     @user = User.all
-    @books = Book.all
+    @book = Book.all
   end
 
   def get_image
