@@ -5,10 +5,10 @@ class BooksController < ApplicationController
   end
 
   def index
-    @book = Book.new
+    @user = User.all
     @books = Book.all
   end
-  
+
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -16,9 +16,9 @@ class BooksController < ApplicationController
     end
     image
   end
-  
+
   def show
-    
+
   end
 
   def create
@@ -26,8 +26,12 @@ class BooksController < ApplicationController
     book = Book.new(book_params)
     # 3. データをデータベースに保存するためのsaveメソッド実行
     book.save
-    # 4. トップ画面へリダイレクト
-    redirect_to '/top'
+
+    if @books.save
+      redirect_to book_path
+    else
+      render :new
+    end
   end
 
 
@@ -36,7 +40,7 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:book, :body)
   end
-  
+
   def user_params
     params.require(:user).permit(:name, :profile_image)
   end
