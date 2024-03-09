@@ -1,5 +1,24 @@
 <p>userindex</p>
 
-
+<table class="table table-striped">
+  <h1>Users</h1>
+  <ul class="users">
+    <%= @user.each do |user| %>
+    <li>
+      <p>image</p>
+      <span>
+      <% if user.image.attached? %>
+        <%= image_tag user.image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+      <% end %>
+      </span>
+      <p>name</p>
+      <span><%= user.name %></span>
+      <h4><%= link_to "Show", user %></h4>
+    <% end %>
+    </li>
+  </ul>
+</table>
 
 <%= render 'list', user: current_user %>
