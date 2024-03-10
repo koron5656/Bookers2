@@ -37,7 +37,7 @@
               <i class="fa-solid fa-users"></i></i><%= link_to "Books", "/books" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Sign up", new_user_registration_path %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete %>
             </li>
             <% else %>
             <li class="nav-item">
