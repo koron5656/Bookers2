@@ -3,6 +3,7 @@
 <div><%= image_tag user.get_profile_image(100,100) %></div>
 <h4>name <%= user.name %></h4>
 <h4>introduction <%= user.introduction %></h4>
+<td><%= link_to 'UserEdit', edit_user_path(user.id) %></td>
 
 <!-- form_with部分 -->
 <%= form_with model: Book.new do |f| %>
