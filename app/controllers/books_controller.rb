@@ -8,25 +8,17 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     @book.save
-    redirect_to books_path
+    redirect_to book_path(@book)
   end
 
   def index
-    @user = User.all
     @book = Book.all
-  end
-
-  def get_image
-    unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-    end
-    image
+    @user = @book.user
   end
 
   def show
-    @user = User.all
     @book = Book.find(params[:id])
+    @user = @book.user
   end
 
   private

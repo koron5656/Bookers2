@@ -14,21 +14,13 @@
           </tr>
         </thead>
         <tbody>
-          <% @user.each do |user| %>
+          <% @book.each do |book| %>
           <tr>
             <td>
-              <% if user.image.attached? %>
-                <%= image_tag user.image, size: "200x200" %>
-              <% else %>
-                <%= image_tag 'no_image', size: "200x200" %>
-              <% end %>
+
             </td>
-            <% @book.each do |book| %>
-              <td><%= book.title %></td>
-              <td><%= book.body %></td>
-              <td>Edit</td>
-              <td>Destroy</td>
-            <% end %>
+            <td><%= book.title %></td>
+            <td><%= book.body %></td>
           </tr>
           <% end %>
         </tbody>

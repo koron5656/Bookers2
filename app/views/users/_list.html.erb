@@ -1,11 +1,6 @@
 <h1>User info</h1>
   <!-- 追加部分 -->
-  <% if user.image.attached? %>
-    <%= image_tag user.image, size: "200x200" %>
-  <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
-
+<div><%= image_tag user.get_profile_image(100,100) %></div>
 <h4>name <%= user.name %></h4>
 <h4>introduction <%= user.introduction %></h4>
 
