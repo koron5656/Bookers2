@@ -17,13 +17,7 @@
         <tbody>
           <% @user.each do |user| %>
           <tr>
-            <td>
-              <% if user.image.attached? %>
-                <%= image_tag user.image, size: "200x200" %>
-              <% else %>
-                <%= image_tag 'no_image', size: "200x200" %>
-              <% end %>
-            </td>
+            <td><%= image_tag user.get_profile_image(100,100) %></td>
             <td><%= user.name %></td>
             <td><%= link_to "Show", user %></td>
           </tr>
