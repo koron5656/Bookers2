@@ -4,7 +4,7 @@
       <%= render 'users/list', user: current_user %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <p>Books</p>
+      <h1>Books</h1>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -16,8 +16,7 @@
         <tbody>
           <% @book.each do |book| %>
           <tr>
-            <td>
-            </td>
+            <td><%= image_tag book.user.get_profile_image(100,100) %></td>
             <td><%= book.title %></td>
             <td><%= book.body %></td>
           </tr>
