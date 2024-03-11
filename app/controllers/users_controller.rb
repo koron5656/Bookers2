@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    flash[:notice] = "プロフィール更新に成功しました。"
     redirect_to user_path(@user.id)
   end
 

@@ -21,14 +21,19 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to book_path(@book)
+    if @book.save
+      flash[:notice] = "投稿に成功しました。"
+      redirect_to book_path(@book)
+    else
+      flash[:notice] = "投稿に失敗しました。"
+      render :new
+    end
   end
 
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      flash[:notice] = "Book was successfully updated."
+      flash[:notice] = "投稿内容の更新に成功しました。"
       redirect_to book_path(@book.id)
     else
       @books = Book.all
