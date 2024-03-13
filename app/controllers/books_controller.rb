@@ -14,7 +14,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    @book = Book.all
+    @books = Book.all
     #@user = User.all
   end
 
@@ -25,8 +25,8 @@ class BooksController < ApplicationController
       flash[:notice] = "投稿に成功しました。"
       redirect_to book_path(@book)
     else
-      flash[:notice] = "投稿に失敗しました。"
-      render :new
+      @books = Book.all
+      render:index
     end
   end
 
