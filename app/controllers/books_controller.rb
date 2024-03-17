@@ -17,14 +17,13 @@ before_action :is_matching_login_user, only: [:edit, :update]
   def index
     @books = Book.all
     @book = Book.new
-    #@user = User.all
   end
 
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
-      flash[:notice] = "投稿に成功しました。"
+      flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book)
     else
       @books = Book.all
@@ -35,7 +34,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      flash[:notice] = "投稿内容の更新に成功しました。"
+      flash[:notice] = "You have updated book successfully."
       redirect_to book_path(@book.id)
     else
       @books = Book.all
@@ -55,14 +54,10 @@ before_action :is_matching_login_user, only: [:edit, :update]
     params.require(:book).permit(:title, :body)
   end
 
-  def user_params
-    params.require(:user).permit(:name, :profile_image)
-  end
-
   def is_matching_login_user
-    @user = User.find(params[:id])
-    unless @user.id == current_user.id
-      redirect_to book_path
+    @book = Book.find(params[:id])
+    unless @book.user == current_user
+      redirect_to books_path
     end
   end
 end

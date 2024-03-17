@@ -5,14 +5,18 @@
 <h4>introduction <%= user.introduction %></h4>
 <div class="row">
 </div>
-<td><%= link_to 'UserEdit', edit_user_path(user.id), class:"btn btn-outline-secondary btn-block" %></td>
+<td>
+  <%= link_to edit_user_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+</td>
 
-<!-- form_with部分 -->
+<!-- form_with部分 --> 
 <%= form_with model: Book.new do |f| %>
   <h1>New book</h1>
   <p>Title</p>
   <%= f.text_field :title %>
   <p>Opinion</p>
   <%= f.text_area :body %>
-  <%= f.submit 'CreateBook' %>
+  <%= f.submit 'Create Book' %>
 <% end %>
